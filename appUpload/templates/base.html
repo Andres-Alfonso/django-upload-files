@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Base{% endblock %}</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        {% comment %} <h1></h1> {% endcomment %}
+    </header>
+    <main class="max-w-5xl mx-auto p-6">
+        {% block content %}
+        {% endblock %}
+    </main>
+    {% comment %} <footer>
+        <p>© 2024 Mi Sitio</p>
+    </footer> {% endcomment %}
+</body>
+</html>

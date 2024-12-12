@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+
+    <div class="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-lg mt-10">
+        <h1 class="text-2xl font-bold mb-4">Subir Archivos</h1>
+
+        <!-- Formulario -->
+        <form method="POST" enctype="multipart/form-data" class="mb-6">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Subir</button>
+        </form>
+
+        <h2 class="text-xl font-bold mb-4">Archivos Subidos</h2>
+        <ul>
+            {% for archivo in archivos %}
+                <li class="mb-2">
+                    <a href="{{ archivo.archivo.url }}" class="text-blue-500 hover:underline">{{ archivo.nombre }}</a> - Subido el {{ archivo.fecha_carga }}
+                </li>
+            {% empty %}
+                <p>No hay archivos subidos aún.</p>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
